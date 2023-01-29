@@ -1,0 +1,17 @@
+<mat-card fxLayout='column' class="poster card" *ngIf="model !== undefined">
+    <div fxFlex='80' style="display: flex;">
+        <img class="poster__image" loading="lazy" [src]="model?.posterPath" [alt]="model.title" appImgMissingDirective
+            (error)="setDefaultImg(model)">
+    </div>
+
+    <div>
+        <app-movie-rating [score]="model.imdbVoteAverage" [isSmall]="true"></app-movie-rating>
+        <a *ngIf="model.title" [title]="model.title" class="poster__title colored-hover">
+            {{model.title}}
+        </a>
+        <p *ngIf="model.releaseDate">
+            {{(model.releaseDate) | date}}
+        </p>
+    </div>
+
+</mat-card>

@@ -1,0 +1,8 @@
+<div class="full-size" fxLayout="column" fxLayoutGap="1rem">
+  <app-movies-carousel [overviewList]="overviewList"></app-movies-carousel>
+
+  <div *ngIf="recommendedMovies.length">
+    <h3>Based on your activity:</h3>
+    <app-movies-carousel [overviewList]="recommendedMovies"></app-movies-carousel>
+  </div>
+</div>

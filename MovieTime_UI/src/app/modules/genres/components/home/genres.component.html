@@ -1,0 +1,6 @@
+<div *ngFor="let item of genreMovies">
+  <h3>{{item.genreName}} <mat-icon (click)="onOpenCategory(item.genreName)">open_in_new</mat-icon>
+  </h3>
+  <app-movies-carousel [overviewList]="item.moviesList"></app-movies-carousel>
+</div>
+<mat-spinner [diameter]="50" *ngIf="isLoading"></mat-spinner>

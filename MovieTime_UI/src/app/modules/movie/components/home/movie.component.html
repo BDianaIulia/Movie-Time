@@ -1,0 +1,75 @@
+<div *ngIf='model' fxLayout="column" class="movie-main-data-container container" fxLayoutGap="2rem">
+
+  <div class="movie-top-section" [fxLayout.gt-sm]="'row'" [fxLayout.lt-md]="'column'">
+
+    <div class="movie-main-img" fxLayout="column">
+      <img class="poster__image" loading="lazy" [src]="model?.posterPath" [alt]="model.title" appImgMissingDirective
+        (error)="setDefaultImg(model)">
+      <div style="height: 1rem"></div>
+      <div fxLayoutAlign="space-between center">
+        <button mat-raised-button (click)="onAddToWishlist()">
+          <mat-icon>add_to_queue</mat-icon> Add to wishlist
+        </button>
+        <button mat-raised-button (click)="onRateMovie()">
+          <mat-icon>star_half</mat-icon> Rate the movie
+        </button>
+      </div>
+      <!-- <div class="c-rating c-rating--small" data-rating-value="3.25">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+      </div> -->
+    </div>
+
+    <div class="movie-main-info">
+      <app-movie-rating [score]="model?.imdbVoteAverage"></app-movie-rating>
+      <div style="height: 1rem"></div>
+
+      <div class="title-subtitle-container" fxFlex="100">
+        <h1 class="movie-main-title">{{model.title}}</h1>
+        <span class="info">{{model.releaseDate | date}}</span>
+      </div>
+
+      <section>
+        <div>
+          <h3>Overview</h3>
+          <p style="padding-right: 8px">{{model.overview}}</p>
+        </div>
+        <div>
+          <h3>Categories</h3>
+          <button *ngFor="let genre of model.genres" mat-raised-button aria-label="Genres"
+            style="margin-right: 5px">{{genre.name}}</button>
+        </div>
+        <div style="height: 1rem"></div>
+        <div>
+          <h3>Spoken languages</h3>
+          <button *ngFor="let language of model.spokenLanguages" mat-raised-button aria-label="Languages"
+            style="margin-right: 5px">{{language.name}}</button>
+        </div>
+        <!-- <div style="height: 1rem"></div>
+        <div fxLayout="row">
+          <div class="c-rating c-rating--small" data-rating-value="1">
+            <button>1</button>
+          </div>
+          <div class="rating">{{model?.imdbVoteAverage}}</div>
+          <div class="percentage">/10</div>
+        </div> -->
+      </section>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="!loadingRecommendedDescripitonMovies">
+    <h2>Based on similar storyline:</h2>
+    <app-movies-carousel [overviewList]="recommendedDescripitonMovies"></app-movies-carousel>
+  </div>
+
+  <div *ngIf="!loadingRecommendedDetailsMovies">
+    <h2>If you are interested for the same cast:</h2>
+    <app-movies-carousel [overviewList]="recommendedDetailsMovies"></app-movies-carousel>
+  </div>
+
+</div>

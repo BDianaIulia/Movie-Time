@@ -1,0 +1,44 @@
+<form #form="ngForm">
+  <div class="full-width" fxLayoutAlign="center start">
+    <mat-card class="card">
+      <div class="container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
+        <div class="title">Login</div>
+        <div style="height: 1rem;"></div>
+        <div fxLayout="column" id="username">
+          <label for="uname">
+            <b>{{ 'username' | translate }}</b>
+          </label>
+          <input class="input" type="text" [placeholder]="'username' | translate" name="uname" #uname="ngModel"
+            [(ngModel)]="loginModel.username" required />
+          <div *ngIf="uname.touched && uname.invalid">
+            <div class="error" *ngIf="uname.errors?.required">
+              {{ 'validation.fieldRequired' | translate }}
+            </div>
+          </div>
+        </div>
+        <div fxLayout="column" id="password">
+          <label for="psw">
+            <b>{{ 'password' | translate }}</b>
+          </label>
+          <input class="input" type="password" [placeholder]="'password' | translate" name="psw" #psw="ngModel"
+            [(ngModel)]="loginModel.password" required />
+          <div *ngIf="psw.touched && psw.invalid">
+            <div class="error" *ngIf="psw.errors?.required">
+              {{ 'passwordRequired' | translate }}
+            </div>
+          </div>
+        </div>
+        <div class="full-width" fxLayoutAlign="center center">
+          <button class="button" (click)="onLogin()" [disabled]="form.invalid || form.pristine">
+            {{ 'login' | translate }}
+          </button>
+        </div>
+        <div class="full-width" fxLayoutAlign="center center">
+          <button class="button" (click)="onNavigateToRegister()">
+            {{ 'register' | translate }}
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</form>

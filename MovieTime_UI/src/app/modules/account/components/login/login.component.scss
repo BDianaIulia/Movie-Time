@@ -1,0 +1,40 @@
+.error {
+  margin: 10px 0px;
+  color: red;
+  font-size: 0.9em;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 20px 0 10px 0;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+.title:before {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 33px;
+  left: 0px;
+  bottom: -6px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #211683 0%, #320566 100%);
+}
+
+.card {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+  width: 35rem !important;
+}
+
+.button {
+  width: 20rem;
+  border-radius: 4px;
+}
+
+.input {
+  width: 20rem;
+}

@@ -1,0 +1,41 @@
+.movie-main-data-container {
+  padding: 30px 0;
+
+  .movie-main-img img {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 25vw;
+  }
+
+  .movie-main-info {
+    padding-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+
+    .title-subtitle-container {
+
+      h3 {
+        font-weight: 500;
+        color: #fff;
+        font-size: 1.1em;
+        font-style: italic;
+        opacity: 0.8;
+        margin: 0;
+      }
+
+    }
+
+    .play-trailer {
+
+      ::ng-deep .mat-button-wrapper {
+        display: flex;
+        align-items: center;
+
+        mat-icon {
+          padding-right: 2px
+        }
+      }
+    }
+  }
+}

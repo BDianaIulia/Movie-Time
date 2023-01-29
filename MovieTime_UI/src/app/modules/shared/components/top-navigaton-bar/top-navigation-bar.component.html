@@ -1,0 +1,27 @@
+<header class="navbar__container" [class.colored__scrolled]="isScrolled">
+  <nav fxLayout="row" class="navbar__nav" fxLayoutGap="0.8rem">
+    <a routerLink="/" class="flex-start">
+      <img src="assets/img/logo.png" alt="Movie Time" loading="lazy">
+    </a>
+    <div fxFlex fxLayoutAlign="start center" class="navbar__list" [class.colored__text]="isScrolled">
+      <div fxFlex>
+        <a mat-button routerLink="" aria-label="Home">Home</a>
+        <a mat-button routerLink="genres" aria-label="Genres">Genres</a>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div>
+          <mat-form-field class="form-field" [ngClass.gt-sm]="'input_clicked_xl'" [ngClass.lt-md]="'input_clicked_s'">
+            <input matInput type="text" [(ngModel)]="searchedValue" placeholder="Advanced search">
+          </mat-form-field>
+          <button matSuffix mat-icon-button aria-label="Search" (click)="onSearch()">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+        <a mat-button routerLink="account/login" aria-label="My account" class="my_account">
+          <mat-icon>account_circle</mat-icon>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+</header>

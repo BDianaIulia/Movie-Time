@@ -1,0 +1,101 @@
+.navbar__container {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: .4s;
+    z-index: 100;
+    color: white;
+}
+
+.colored__scrolled {
+    background-color: #212121;
+    transition: .4s;
+}
+
+.navbar__nav {
+    padding: 0 1rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 5.5rem;
+        transform: translate(20px, 20px);
+    }
+}
+
+.navbar__list {
+    flex-direction: row;
+    column-gap: 1.5rem;
+
+    a {
+        transition: .3s;
+    }
+}
+
+.colored__text {
+    color: white;
+}
+
+.activated-route {
+    border-bottom: 2px solid;
+    border-radius: 0;
+
+    &:last-child {
+        margin-right: 15px;
+    }
+}
+
+.form-field {
+    transform: translateY(7px);
+}
+
+.no_input {
+    width: 0px !important;
+    display: none;
+    transition: width 2s;
+}
+
+.input_clicked_xl {
+    width: 10rem;
+}
+
+.input_clicked_s {
+    width: 5rem;
+}
+
+.my_account {
+    min-width: 0 !important;
+}
+
+::ng-deep .mat-form-field-underline,
+::ng-deep .mat-form-field-ripple {
+    background-color: white !important;
+    color: white !important
+}
+
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+    color: white;
+}
+
+::ng-deep {
+    .colored__text .mat-form-field-underline {
+        background-color: white !important;
+        color: white !important
+    }
+}
+
+::ng-deep {
+    .colored__text .mat-form-field-ripple {
+        background-color: white !important;
+        color: white !important
+    }
+}
+
+::ng-deep {
+    .colored__text .mat-form-field-empty.mat-form-field-label {
+        color: white;
+    }
+}

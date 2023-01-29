@@ -1,0 +1,9 @@
+<app-movies-list [movies]="simpleSearchedMovies"></app-movies-list>
+<mat-spinner [diameter]="50" *ngIf="isLoadingSimple"></mat-spinner>
+<div *ngIf="!isLoadingSimple && !simpleSearchedMovies.length">No results</div>
+
+<div class="line"></div>
+
+<h3 *ngIf="advancedSearchedMovies.length">These may interest you as well</h3>
+<app-movies-list [movies]="advancedSearchedMovies"></app-movies-list>
+<mat-spinner [diameter]="50" *ngIf="isLoadingAdv"></mat-spinner>

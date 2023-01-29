@@ -1,0 +1,33 @@
+// .mat-drawer-container {
+//   background-color: #efefef !important;
+// }
+
+.mat-drawer-content {
+  overflow: hidden !important;
+}
+
+div.page-container {
+  padding-top: 200px !important;
+  margin-left: auto;
+  max-width: 1920px;
+  height: 100%;
+  color: white;
+  width: 80vw;
+}
+
+.backgroud-image {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background: linear-gradient(rgba(52, 41, 49, 0.8), rgba(26, 33, 74, 0.8)), url('../../assets/img/backgroud_all_movies.jpg') no-repeat bottom;
+  background-size: cover;
+  font-size: 4rem;
+}
+
+.blur {
+  // background-color: rgb(0, 0, 0, 0.5);
+  // height: 100%;
+  // filter: blur(10px);
+}

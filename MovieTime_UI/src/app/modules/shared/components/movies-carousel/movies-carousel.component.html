@@ -1,0 +1,15 @@
+<div fxLayout="row" fxLayoutGap="10px" style="position: relative; overflow: hidden;">
+  <div class="side-left">
+    <mat-icon class="icon" (click)="scrollLeft()">keyboard_arrow_left</mat-icon>
+  </div>
+  <div #moviesListElement class="list-view" fxLayout="row" fxLayoutGap="10px">
+    <div *ngFor="let movie of moviesOverviewList" [ngClass.xs]="'movie-card-xsmall'" [ngClass.sm]="'movie-card-small'"
+      [ngClass.md]="'movie-card-medium'" [ngClass.lg]="'movie-card-large'" [ngClass.xl]="'movie-card-xlarge'"
+      (click)="onMovieClicked(movie)">
+      <app-movies-card class="card full-height" [model]="movie"></app-movies-card>
+    </div>
+  </div>
+  <div class="side-right">
+    <mat-icon class="icon" (click)="scrollRight()">keyboard_arrow_right</mat-icon>
+  </div>
+</div>

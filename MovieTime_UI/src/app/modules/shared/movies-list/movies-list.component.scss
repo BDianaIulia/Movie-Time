@@ -1,0 +1,34 @@
+.image_xl {
+    width: 17vw;
+}
+
+.image_m {
+    width: 22vw;
+}
+
+.image_s {
+    width: 32vw;
+}
+
+.title-image {
+    max-width: 17vw;
+}
+
+.card {
+    margin-bottom: 1rem;
+    background: rgb(66, 66, 66, 0.4);
+    padding: 0;
+}
+
+.title {
+    padding-left: 5px;
+    display: inherit;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.movie-rating {
+    font-size: 12px;
+}

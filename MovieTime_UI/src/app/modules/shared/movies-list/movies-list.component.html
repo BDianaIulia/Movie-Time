@@ -1,0 +1,25 @@
+<div fxLayout="row wrap" fxLayoutGap="1rem" fxLayoutAlign="space-evenly center">
+    <mat-card *ngFor="let movie of movies" class="card">
+        <div fxLayuot="column">
+            <img [ngClass.gt-md]="'image_xl'" [ngClass.md]="'image_m'" [ngClass.lt-md]="'image_s'" loading="lazy"
+                [src]="movie.posterPath" (click)="onCardClicked(movie)" [alt]="movie.title" appImgMissingDirective
+                (error)="setDefaultImg(movie)">
+            <div class="title title-image">{{movie.title}}</div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div>
+                    <app-movie-rating [score]="movie.imdbVoteAverage" [isSmall]="true" class="movie-rating">
+                    </app-movie-rating>
+                </div>
+                <div fxShow [fxHide.gt-sm]="'true'">
+                    <button (click)="onAddToWishlist(movie)" mat-raised-button matTooltip="Add to wishlist">
+                        <mat-icon>add_to_queue</mat-icon>
+                    </button>
+                </div>
+                <div fxShow [fxHide.lt-md]="'true'">
+                    <button (click)="onAddToWishlist(movie)" mat-raised-button>Add to wishlist <mat-icon>add_to_queue
+                        </mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
