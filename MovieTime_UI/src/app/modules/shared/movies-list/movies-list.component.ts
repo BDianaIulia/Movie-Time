@@ -10,7 +10,7 @@ import { MoviesService } from '../../core/services/movies.service';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent {
-  private readonly DEFAULT_IMAGE_URL = 'https://image.tmdb.org/t/p/original/vArgTEbIPVclxhfdLubLwOYfVKG.jpg';
+  private readonly DEFAULT_IMAGE_URL = './assets/img/default-img.jpg';
 
   @Input() public movies = new Array<Movie>();
 
@@ -25,7 +25,7 @@ export class MoviesListComponent {
     if (!model) return;
     this.moviesService.addToWishlist(model);
   }
-
+  
   public onCardClicked(model: Movie) {
     this.router.navigateByUrl(`/movie/${model.id}`);
   }

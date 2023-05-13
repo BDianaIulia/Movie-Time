@@ -19,7 +19,7 @@ export class GenreComponent implements OnInit {
   public ROWS_FETCHING = 3;
 
   private genreName: string = '';
-  private readonly DEFAULT_IMAGE_URL = 'https://image.tmdb.org/t/p/original/vArgTEbIPVclxhfdLubLwOYfVKG.jpg';
+  private readonly DEFAULT_IMAGE_URL = './assets/img/default-img.jpg';
 
   constructor(private moviesService: MoviesService, private route: ActivatedRoute) {
   }

@@ -9,8 +9,10 @@ import { LoginModel } from '../../models/login.model';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnDestroy {
-  private destroy$: Subject<boolean> = new Subject();
   public loginModel = new LoginModel();
+  public hasError = false;
+
+  private destroy$: Subject<boolean> = new Subject();
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -24,6 +26,7 @@ export class LoginComponent implements OnDestroy {
       .login(this.loginModel)
       .pipe(takeUntil(this.destroy$))
       .subscribe((response => {
+        this.hasError = !response.succeeded;
       }));
   }
 

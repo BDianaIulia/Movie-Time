@@ -65,49 +65,77 @@ namespace WebApi.Controllers
         [Route("movie-description-based-recommender/{movieName}")]
         public async Task<ActionResult<ResponseDto<List<Movie>>>> GetMovieDescriptionBasedRecommendations([FromRoute] string movieName)
         {
-            var items = await _movieService.GetMovieDescriptionBasedRecommendations(movieName);
-            var titles = items.Select(item => item.title).ToList();
-            List<Movie> movies = await _movieService.GetMoviesByName(titles);
-            return HandleResponse(movies);
+            try
+            {
+                var items = await _movieService.GetMovieDescriptionBasedRecommendations(movieName);
+                var titles = items.Select(item => item.title).ToList();
+                List<Movie> movies = await _movieService.GetMoviesByName(titles);
+                return HandleResponse(movies);
+            }
+            catch
+            {
+                return base.HandleResponse(new List<Movie>());
+            }
         }
         [HttpGet]
         [Route("movie-details-based-recommender/{movieName}")]
         public async Task<ActionResult<ResponseDto<List<Movie>>>> GetMovieDetailsBasedRecommendations([FromRoute] string movieName)
         {
-            var items = await _movieService.GetMovieDetailsBasedRecommendations(movieName);
-            var ids = items.Select(item => item.imdb_id).ToList();
-            List<Movie> movies = await _movieService.GetMoviesByImdbId(ids);
-            return HandleResponse(movies);
+            try
+            {
+                var items = await _movieService.GetMovieDetailsBasedRecommendations(movieName);
+                var ids = items.Select(item => item.imdb_id).ToList();
+                List<Movie> movies = await _movieService.GetMoviesByImdbId(ids);
+                return HandleResponse(movies);
+            }
+            catch
+            {
+                return base.HandleResponse(new List<Movie>());
+            }
         }
         [HttpGet]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [Route("movie-user-activity-based-recommender")]
         public async Task<ActionResult<ResponseDto<List<Movie>>>> GetMovieUserActivityBasedRecommendations()
         {
-            var user = await _tokenAuthenticationHandler.GetCurrentUserAsync(HttpContext);
-            if (user == null) return HandleResponse(new List<Movie>(), DefaultErrors.GetErrors(DefaultErrors.BadRequestError));
+            try
+            {
+                var user = await _tokenAuthenticationHandler.GetCurrentUserAsync(HttpContext);
+                if (user == null) return HandleResponse(new List<Movie>(), DefaultErrors.GetErrors(DefaultErrors.BadRequestError));
 
-            IEnumerable<UserMovieActivity> wishList = await _activityService.GetUserMoviesWishList(user, 10);
-            var ids = wishList.Select(item => item.Movie.Id).ToList();
-            List<Movie> wishListMovies = await _movieService.GetMoviesById(ids);
+                IEnumerable<UserMovieActivity> wishList = await _activityService.GetUserMoviesWishList(user, 10);
+                var ids = wishList.Select(item => item.Movie.Id).ToList();
+                List<Movie> wishListMovies = await _movieService.GetMoviesById(ids);
 
-            IEnumerable<UserMovieActivity> goodRating = await _activityService.Get5StarsRatedMovies(user, 10);
-            ids = wishList.Select(item => item.Movie.Id).ToList();
-            List<Movie> goodRatingMovies = await _movieService.GetMoviesById(ids);
+                IEnumerable<UserMovieActivity> goodRating = await _activityService.Get5StarsRatedMovies(user, 10);
+                ids = goodRating.Select(item => item.Movie.Id).ToList();
+                List<Movie> goodRatingMovies = await _movieService.GetMoviesById(ids);
 
-            var items = await _movieService.GetMovieUserActivityBasedRecommendations(wishListMovies, goodRatingMovies);
-            var titles = items.Select(item => item.title).ToList();
-            List<Movie> movies = await _movieService.GetMoviesByName(titles);
-            return HandleResponse(movies);
+                var items = await _movieService.GetMovieUserActivityBasedRecommendations(wishListMovies, goodRatingMovies);
+                var titles = items.Select(item => item.title).ToList();
+                List<Movie> movies = await _movieService.GetMoviesByName(titles);
+                return HandleResponse(movies);
+            }
+            catch
+            {
+                return base.HandleResponse(new List<Movie>());
+            }
         }
         [HttpGet]
         [Route("movie-keywords-based-recommender/{keywords}")]
         public async Task<ActionResult<ResponseDto<List<Movie>>>> GetMovieKeywordsBasedRecommendations([FromRoute] string keywords)
         {
-            var items = await _movieService.GetMovieKeywordsBasedRecommendations(keywords);
-            var ids = items.Select(item => item.imdb_id).ToList();
-            List<Movie> movies = await _movieService.GetMoviesByImdbId(ids);
-            return HandleResponse(movies);
+            try 
+            {
+                var items = await _movieService.GetMovieKeywordsBasedRecommendations(keywords);
+                var ids = items.Select(item => item.imdb_id).ToList();
+                List<Movie> movies = await _movieService.GetMoviesByImdbId(ids);
+                return HandleResponse(movies);
+            }
+            catch
+            {
+                return base.HandleResponse(new List<Movie>());
+            }
         }
         [HttpGet]
         [Route("simple-search/{keywords}")]

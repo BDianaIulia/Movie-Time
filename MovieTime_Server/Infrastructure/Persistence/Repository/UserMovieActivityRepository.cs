@@ -28,6 +28,7 @@ namespace Infrastructure.Persistence.Repository
         {
             return await _dbSet
                         .Where(activity => activity.User.Id == user.Id && activity.Rating == 5)
+                        .Include(activity => activity.Movie)
                         .Take(take).ToListAsync();
         }
     }

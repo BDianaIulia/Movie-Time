@@ -30,12 +30,14 @@ namespace Application.Communication
                 try
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
+                    if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                        return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(new List<RecommendedMovieDto>());
                     var recommendationsResponse = JsonConvert.DeserializeObject<RecommendationsResponse<RecommendedMovieDto>>(apiResponse);
                     return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(recommendationsResponse.data);
                 }
                 catch (Exception e)
                 {
-                    return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(null);
+                    throw;
                 }
             }
         }
@@ -46,12 +48,14 @@ namespace Application.Communication
                 try
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
+                    if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                        return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(new List<RecommendedMovieDto>());
                     var recommendationsResponse = JsonConvert.DeserializeObject<RecommendationsResponse<RecommendedMovieDto>>(apiResponse);
                     return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(recommendationsResponse.data);
                 }
                 catch (Exception e)
                 {
-                    return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(null);
+                    throw;
                 }
             }
         }
@@ -62,12 +66,14 @@ namespace Application.Communication
                 try
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
+                    if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                        return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(new List<RecommendedMovieDto>());
                     var recommendationsResponse = JsonConvert.DeserializeObject<RecommendationsResponse<RecommendedMovieDto>>(apiResponse);
                     return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(recommendationsResponse.data);
                 }
                 catch (Exception e)
                 {
-                    return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(null);
+                    throw;
                 }
             }
         }
@@ -78,12 +84,14 @@ namespace Application.Communication
                 try
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
+                    if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                        return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(new List<RecommendedMovieDto>());
                     var recommendationsResponse = JsonConvert.DeserializeObject<RecommendationsResponse<RecommendedMovieDto>>(apiResponse);
                     return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(recommendationsResponse.data);
                 }
                 catch (Exception e)
                 {
-                    return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(null);
+                    throw;
                 }
             }
         }
@@ -99,12 +107,14 @@ namespace Application.Communication
             try
             {
                 var clientValue = client.Execute<RecommendationsResponse<RecommendedMovieDto>>(request);
+                if (clientValue.StatusCode != System.Net.HttpStatusCode.OK)
+                    return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(new List<RecommendedMovieDto>());
                 var recommendationsResponse = JsonConvert.DeserializeObject<RecommendationsResponse<RecommendedMovieDto>>(clientValue.Content);
                 return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(recommendationsResponse.data);
             }
-            catch (Exception exception)
+            catch (Exception e)
             {
-                return await Task.FromResult<IEnumerable<RecommendedMovieDto>>(null);
+                throw;
             }
         }
     }

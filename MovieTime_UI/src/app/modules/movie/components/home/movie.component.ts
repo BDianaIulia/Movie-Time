@@ -21,9 +21,9 @@ export class MovieComponent implements OnInit {
   public loadingRecommendedDetailsMovies = false;
   public loadingRecommendedDescripitonMovies = false;
 
-  private readonly DEFAULT_IMAGE_URL = 'https://image.tmdb.org/t/p/original/vArgTEbIPVclxhfdLubLwOYfVKG.jpg';
+  private readonly DEFAULT_IMAGE_URL = './assets/img/default-img.jpg';
 
-  constructor(private moviesService: MoviesService, private route: ActivatedRoute) {
+  constructor(private moviesService: MoviesService, private route: ActivatedRoute, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -60,13 +60,13 @@ export class MovieComponent implements OnInit {
   }
 
   public onRateMovie() {
-    // const dialogRef = this.dialog.open(MovieRatingsComponent);
+    const dialogRef = this.dialog.open(MovieRatingsComponent);
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (!this.model) return;
-    //   if(result === undefined) return;
-    //   this.moviesService.addRating(this.model, result.data);
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (!this.model) return;
+      if(result === undefined) return;
+      this.moviesService.addRating(this.model, result.data);
+    });
   }
 
   public moviePercentage(model: Movie) {

@@ -6,6 +6,7 @@ import { map, Observable, tap } from 'rxjs';
 import { LoginModel } from '../../account/models/login.model';
 import { RegisterModel } from '../../account/models/register.model';
 import { ResponseModel } from '../../shared/dtos/ResponseModel';
+import { ResponseModelNonGeneric } from '../../shared/dtos/ResponseModelNonGeneric';
 import { LoginResponseModel } from '../models/login-response.model';
 import { DataService } from './data.service';
 import { UserService } from './user.service';
@@ -21,20 +22,18 @@ export class AuthService extends DataService {
       .post<ResponseModel<LoginResponseModel>>('login', userCredentials)
       .pipe(
         tap(login => {
-        if(login.succeeded) {
-          this.setJwt(login.data.accessToken);
-        // this.userService.setUser({id: login.id, fullName: login.fullName})
-        localStorage.setItem("demo", "demo");
-         this.router.navigate(['']);
-        }        
+          if (login.succeeded) {
+            this.setJwt(login.data.accessToken);
+            this.router.navigate(['']);
+          }
       }));
   }
 
-  public register(registerDetails: RegisterModel): Observable<void> {
+  public register(registerDetails: RegisterModel): Observable<ResponseModelNonGeneric> {
     const path = `register`;
 
     return super
-      .post<void>(path, registerDetails);
+      .post<ResponseModelNonGeneric>(path, registerDetails);
   }
 
   public logout(): void {

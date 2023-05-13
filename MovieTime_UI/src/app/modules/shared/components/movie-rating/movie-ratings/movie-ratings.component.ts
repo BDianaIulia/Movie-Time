@@ -8,9 +8,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class MovieRatingsComponent {
 
-  // constructor(public dialogRef: MatDialogRef<MovieRatingsComponent>) {}
+  constructor(public dialogRef: MatDialogRef<MovieRatingsComponent>) {}
 
   public onAddRating(rating: number) {
-    //this.dialogRef.close({succedeed: true, data: rating});
+    this.dialogRef.close({succedeed: true, data: rating});
   }
 }

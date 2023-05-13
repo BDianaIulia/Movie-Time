@@ -64,6 +64,7 @@
         <button class="full-width button" (click)="onBackToLogin()">
           {{ 'backToLogin' | translate }}
         </button>
+        <div *ngIf="hasError" class="error">Registration failed! Please re-enter the credentials.</div>
       </div>
     </mat-card>
   </div>

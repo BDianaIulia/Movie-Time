@@ -9,8 +9,10 @@ import { RegisterModel } from '../../models/register.model';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnDestroy {
-  private destroy$: Subject<boolean> = new Subject();
   public registerModel = new RegisterModel();
+  public hasError = false;
+
+  private destroy$: Subject<boolean> = new Subject();
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -23,8 +25,13 @@ export class RegisterComponent implements OnDestroy {
     this.authService
       .register(this.registerModel)
       .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.router.navigate(['account', 'login']);
+      .subscribe({
+        next: (response) => {
+          this.hasError = !response.succeeded;
+          if (!response.succeeded) return;
+          this.router.navigate(['account', 'login']);
+        },
+        error: (error) => {}
       });
   }
 

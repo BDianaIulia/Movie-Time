@@ -38,6 +38,7 @@
             {{ 'register' | translate }}
           </button>
         </div>
+        <div *ngIf="hasError" class="error">Authentification failed! Please re-enter the credentials.</div>
       </div>
     </mat-card>
   </div>

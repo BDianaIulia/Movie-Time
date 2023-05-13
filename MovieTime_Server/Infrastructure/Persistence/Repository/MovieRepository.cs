@@ -14,9 +14,8 @@ namespace Infrastructure.Persistence.Repository
         public MovieRepository(MovieTimeDbContext dbContext) : base(dbContext) { }
         public async Task<ICollection<Movie>> GetOverview()
         {
-            var result =  await this._dbSet.Skip(0).Take(10).ToListAsync();
-            return result;
-            //.OrderByDescending(movie => movie.ImdbVoteAverage)
+            var result =  await this._dbSet.Skip(0).Take(100).OrderByDescending(movie => movie.ReleaseDate).ToListAsync();
+            return result.Take(10).ToList();
         }
         public async Task<ICollection<Movie>> GetPaginated(int pageIndex, int itemsPerPage)
         {

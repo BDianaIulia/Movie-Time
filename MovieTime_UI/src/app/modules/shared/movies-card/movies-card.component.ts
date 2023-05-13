@@ -7,7 +7,7 @@ import { Movie } from '../../core/models/movie.model';
   styleUrls: ['./movies-card.component.scss']
 })
 export class MoviesCardComponent {
-  private readonly DEFAULT_IMAGE_URL = 'https://image.tmdb.org/t/p/original/vArgTEbIPVclxhfdLubLwOYfVKG.jpg';
+  private readonly DEFAULT_IMAGE_URL = './assets/img/default-img.jpg';
 
   @Input() public model: Movie | undefined;
 
