@@ -77,27 +77,13 @@ namespace WebApi
             services.AddScoped<IDatabaseTransaction, EntityDatabaseTransaction>();
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IUserMovieActivityService, UserMovieActivityService>();
-            services.AddScoped<IItemService, ItemService>();
-            services.AddScoped<ISprintService, SprintService>();
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<ILanguageService, LanguageService>();
-            services.AddScoped<ITeamMemberService, TeamMemberService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IRepository<Item>, Repository<Item>>();
-            services.AddScoped<IRepository<ItemType>, Repository<ItemType>>();
-            services.AddScoped<IRepository<TeamMemberRole>, Repository<TeamMemberRole>>();
-            services.AddScoped<IRepository<State>, Repository<State>>();
-            services.AddScoped<IRepository<TeamMember>, Repository<TeamMember>>();
             services.AddScoped<IRepository<Movie>, Repository<Movie>>();
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IUserMovieActivityRepository, UserMovieActivityRepository>();
-            services.AddScoped<IItemRepository, ItemRepository>();
-            services.AddScoped<IItemTypeRepository, ItemTypeRepository>();
-            services.AddScoped<IStateRepository, StateRepository>();
-            services.AddScoped<ISprintRepository, SprintRepository>();
-            services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
-            services.AddScoped<ITeamMemberRoleRepository, TeamMemberRoleRepository>();
             services.AddScoped<IRecommendationsClient, RecommendationsClient>();
             services.AddScoped<TokenAuthenticationHandler>();
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)

@@ -30,7 +30,6 @@ namespace WebApi.Controllers
 
         [Route("register")]
         [HttpPost]
-
         public async Task<ActionResult<ResponseDto>> Register([FromBody] UserRegistrationDto userRegistrationDto)
         {
             if (ModelState.IsValid)
